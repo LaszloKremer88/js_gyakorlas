@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitwise shifter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px 0;
+        }
+        .result {
+            margin-top: 20px;
+        }
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Bitwise shifter</h2>
+    <label for="decimalInput">Enter a number :</label>
+    <input type="number" id="decimalInput" placeholder="1100">
+    <button onclick="splitBytes()">Számítás</button>
+
+    <!-- Hibaüzenet megjelenítése itt -->
+    <div id="error-message" class="error-message"></div>
+
+    <div class="result">
+        <p><strong>MSB in Dec:</strong> <span id="byte1-decimal"></span></p>
+        <p><strong>LSB in Dec:</strong> <span id="byte2-decimal"></span></p>
+        <p><strong>MSB in Hex:</strong> <span id="byte1-hex"></span></p>
+        <p><strong>LSB in Hex:</strong> <span id="byte2-hex"></span></p>
+    </div>
+
+    <script>
+        function splitBytes() {
+            let user_input = document.getElementById("decimalInput").value;
+            let error_message = document.getElementById("error-message");
+            
+            if (user_input === "") {
+                error_message.textContent = "Enter a number!";
+                return;
+            }
+
+            user_input = parseInt(user_input, 10);
+
+            // Ellenőrzés, hogy a szám abszolút értéke nem nagyobb, mint 65535
+            if (user_input > 65535 || user_input < -65535) {
+                error_message.textContent = "Túl nagy vagy túl kicsi számot adtál meg! A megadható értékek -65535 és 65535 között vannak.";
+                return;
+            }
+
+            // Ha nincs hiba, eltüntetjük a hibaüzenetet
+            error_message.textContent = "";
+
+            // Két byte-ra bontás
+            let byte1 = (user_input >> 8) & 0xFF;  // Magasabb byte
+            let byte2 = (user_input >> 0) & 0xFF;  // Alacsonyabb byte
+
+            // Eredmény megjelenítése decimális formátumban
+            document.getElementById("byte1-decimal").textContent = byte1;
+            document.getElementById("byte2-decimal").textContent = byte2;
+
+            // Eredmény megjelenítése hexadecimális formátumban
+            document.getElementById("byte1-hex").textContent = byte1.toString(16).toUpperCase(); // Hexadecimális
+            document.getElementById("byte2-hex").textContent = byte2.toString(16).toUpperCase(); // Hexadecimális
+        }
+    </script>
+</body>
+</html>
