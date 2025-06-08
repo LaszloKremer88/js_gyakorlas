@@ -1,0 +1,5 @@
+.gradient {
+  background: linear-gradient(to right, #3494E6, #EC6EAD);
+  height: 100vh; /* Teljes magasság */
+  width: 100%;
+}
