@@ -1,15 +1,76 @@
-.gradient {
+:root {
+	--main-font-color: rgb(204, 204, 204);
+	--main-page-max-width: 1200px;
+	--main-input-color: #8854d0;
+	--hover-input-color: #a47cbd;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+/*reset*/
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+	margin: 0;
+	padding: 0;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-container h1 {
+	color:chartreuse;
+}
+
+.header-container h2 {
+	color: darkblue;
+}
+
+.name-container h1 {
+	color:aqua;
+}
+.name-container h2 {
+	color:bisque;
+}
+
+body {
+	
+	
+}
+
+body {
+	font-family: "Montserrat", sans-serif;
+	color: var(--main-font-color);
+	background-color: black;
+	text-rendering: optimizeLegibility;
+
+	background-image: url('../images/pexels-neale-lasalle.jpg'); /* helyes útvonal */
+	background-size: cover;           /* lefedi az egész képernyőt */
+	background-repeat: no-repeat;     /* ne ismétlődjön */
+	background-position: center;      /* mindig középre igazodik */
+	min-height: 100vh;                /* teljes nézetmagasság */
+	margin: 0;                        /* alapértelmezett margók eltüntetése */
+	padding: 0;
+}
+
+.container img {
+	height: 200px;
+	margin: 0.5rem 0;
+}
+
+/*
+body {
   background: linear-gradient(to right, #3494E6, #EC6EAD);
   height: 100vh;
-  width: 100%;
+  margin: 0;
   color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-h1 {
-  font-family: verdana;
-  color: black;
-  text-align: center;
-}
+} */
